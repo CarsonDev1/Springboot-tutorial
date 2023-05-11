@@ -3,21 +3,19 @@ package com.tutorial.apidemo.controllers;
 import com.tutorial.apidemo.entity.Product;
 import com.tutorial.apidemo.models.ProductDto;
 import com.tutorial.apidemo.models.ResponseObject;
-import com.tutorial.apidemo.reponsitories.ProductRepository;
-import com.tutorial.apidemo.service.ProductService;
+import com.tutorial.apidemo.reponsitory.ProductRepository;
+import com.tutorial.apidemo.service.ExcelUploadService;
 import com.tutorial.apidemo.service.impl.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -27,6 +25,9 @@ public class ProductController {
 
     @Autowired
     private ProductRepository repository;
+
+    @Autowired
+    private ExcelUploadService excelUploadService;
 
 
 
@@ -92,5 +93,10 @@ public class ProductController {
         } catch (Exception ex) {
             return false;
         }
+    }
+
+    @PostMapping("/upload")
+    List<Product> updateLoad(@RequestParam("file") MultipartFile file) {
+        return excelUploadService.getProductsDataFromExcel2(file);
     }
 }

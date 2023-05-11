@@ -1,4 +1,4 @@
-package com.tutorial.apidemo.reponsitories;
+package com.tutorial.apidemo.reponsitory;
 
 import com.tutorial.apidemo.entity.Product;
 import org.springframework.data.domain.Sort;

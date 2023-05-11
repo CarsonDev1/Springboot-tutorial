@@ -2,7 +2,7 @@ package com.tutorial.apidemo.service.impl;
 
 import com.tutorial.apidemo.entity.Product;
 import com.tutorial.apidemo.models.ProductDto;
-import com.tutorial.apidemo.reponsitories.ProductRepository;
+import com.tutorial.apidemo.reponsitory.ProductRepository;
 import com.tutorial.apidemo.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
